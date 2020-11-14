@@ -1,0 +1,31 @@
+<%- include("parts/header") %>
+<%- include("parts/navbar") %>
+
+<!-- start product details page -->
+
+<div class="container">
+    <% if(!product) { %>
+        <div class="alert alert-danger">
+            There's No Product To Display
+        </div>
+    <% } else { %>
+        <div class="row">
+            <div class="col col-md-6">
+                <img src="/<%= product.image %>" alt="" class="img-responsive img-block" width="350" height="400">
+                <form action="/cart" method="POST">
+                    <input type="number" name="amount" class="form-control">
+                    <input type="submit" value="Add To Cart" class="btn btn-primary">
+                </form>
+            </div>
+        
+            <div class="col col-md-6">
+                <h3><%= product.name %></h3>
+                <h5>Price: <%= product.price %> $</h5>
+                <p><%= product.description %></p>
+            </div>
+        </div>
+    <% } %>
+    
+</div>
+
+<%- include("parts/footer") %>
